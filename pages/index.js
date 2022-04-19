@@ -76,7 +76,7 @@ export default function Home({ data }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const { data } = await client.query({
     query: PRODOTTI_DONNA,
   });
