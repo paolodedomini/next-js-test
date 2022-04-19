@@ -32,7 +32,7 @@ export default function Home({ data }) {
             width={400}
             height={300}
             layout={"responsive"}
-            placeholder="blur"
+            
           />
         </div>
         <div className="col">
@@ -44,7 +44,7 @@ export default function Home({ data }) {
             width={400}
             height={300}
             layout={"responsive"}
-            placeholder="blur"
+            
           />
         </div>
         <div className="col">
@@ -56,7 +56,7 @@ export default function Home({ data }) {
             width={400}
             height={300}
             layout={"responsive"}
-            placeholder="blur"
+            
           />
         </div>
         <div className="col">
@@ -68,7 +68,7 @@ export default function Home({ data }) {
             width={400}
             height={300}
             layout={"responsive"}
-            placeholder="blur"
+            
           />
         </div>
       </section>
