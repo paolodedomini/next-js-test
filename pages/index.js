@@ -25,50 +25,44 @@ export default function Home({ data }) {
       <section>
         <div className="col">
           <Image
-            src={
-              "https://unsplash.com/photos/Q9Dw7v6GDwc/download?ixid=MnwxMjA3fDB8MXxhbGx8Mnx8fHx8fDJ8fDE2NTAzNzE0Mzk&force=true&w=2400"
-            }
+            src={data.products.products[0].image}
+            
             alt="Picture of the author"
-            width={400}
-            height={300}
+            width={1900}
+            height={1200}
             layout={"responsive"}
+            sizes="50vw"
+          />
+        </div>
+        <div className="col">
+          <Image
+           src={data.products.products[0].image}
+            alt="Picture of the author"
+            width={1900}
+            height={1200}
+            layout={"responsive"}
+            sizes="50vw"
             
           />
         </div>
         <div className="col">
           <Image
-            src={
-              "https://unsplash.com/photos/Q9Dw7v6GDwc/download?ixid=MnwxMjA3fDB8MXxhbGx8Mnx8fHx8fDJ8fDE2NTAzNzE0Mzk&force=true&w=2400"
-            }
+            src={data.products.products[0].image}
             alt="Picture of the author"
-            width={400}
-            height={300}
+            width={1900}
+            height={1200}
             layout={"responsive"}
-            
+            sizes="150vw"
           />
         </div>
         <div className="col">
           <Image
-            src={
-              "https://unsplash.com/photos/Q9Dw7v6GDwc/download?ixid=MnwxMjA3fDB8MXxhbGx8Mnx8fHx8fDJ8fDE2NTAzNzE0Mzk&force=true&w=2400"
-            }
+           src={data.products.products[0].image}
             alt="Picture of the author"
-            width={400}
-            height={300}
+            width={1900}
+            height={1200}
             layout={"responsive"}
-            
-          />
-        </div>
-        <div className="col">
-          <Image
-            src={
-              "https://unsplash.com/photos/Q9Dw7v6GDwc/download?ixid=MnwxMjA3fDB8MXxhbGx8Mnx8fHx8fDJ8fDE2NTAzNzE0Mzk&force=true&w=2400"
-            }
-            alt="Picture of the author"
-            width={400}
-            height={300}
-            layout={"responsive"}
-            
+            sizes="50vw"
           />
         </div>
       </section>
