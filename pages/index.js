@@ -47,7 +47,7 @@ export default function Home({ data }) {
             width={1900}
             height={1200}
             layout={"responsive"}
-            sizes="50vw"
+
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
           />
@@ -59,7 +59,7 @@ export default function Home({ data }) {
             width={1900}
             height={1200}
             layout={"responsive"}
-            sizes="50vw"
+
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
             
@@ -72,7 +72,7 @@ export default function Home({ data }) {
             width={1900}
             height={1200}
             layout={"responsive"}
-            sizes="150vw"
+
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
           />
@@ -84,7 +84,7 @@ export default function Home({ data }) {
             width={1900}
             height={1200}
             layout={"responsive"}
-            sizes="50vw"
+
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
           />
