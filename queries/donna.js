@@ -2,7 +2,6 @@ import { gql } from "@apollo/client";
 
 export default gql`
   query Prodotti {
-     
      products {
        products {
          id
@@ -10,6 +9,10 @@ export default gql`
          image
          price
          sku
+         categories {
+          id
+          name
+        }
          attributeValues {
            attributeId
            id

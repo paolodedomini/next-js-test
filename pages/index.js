@@ -1,6 +1,10 @@
 import { gql } from "@apollo/client";
 import Image from "next/image";
 import client from "../libs/apollo";
+import Jumbo from "../components/home/jumbo"
+import Layout from "../components/layout"
+import CenterHome from "../components/home/centerHome"
+import CategorieHome from "../components/home/categorie"
 import PRODOTTI_DONNA from "../queries/donna";
 
 export default function Home({ data }) {
@@ -19,78 +23,17 @@ export default function Home({ data }) {
     <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
   </svg>`
   const toBase64 = (str) =>
-  typeof window === 'undefined'
-    ? Buffer.from(str).toString('base64')
-    : window.btoa(str)
+    typeof window === 'undefined'
+      ? Buffer.from(str).toString('base64')
+      : window.btoa(str)
   return (
-    <>
-      <h1>puppami la fava {data.products.products[0].name}</h1>
-      <div>
-        <Image
-          src={
-            "https://unsplash.com/photos/Q9Dw7v6GDwc/download?ixid=MnwxMjA3fDB8MXxhbGx8Mnx8fHx8fDJ8fDE2NTAzNzE0Mzk&force=true&w=2400"
-          }
-          alt="Picture of the author"
-          width={1900}
-          height={1200}
-          priority={true}
-          layout={"responsive"}
-        />
-      </div>
 
-      <section>
-        <div className="col">
-          <Image
-            src={data.products.products[0].image}
-            
-            alt="Picture of the author"
-            width={1900}
-            height={1200}
-            layout={"responsive"}
-            sizes="50vw"
-            placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-          />
-        </div>
-        <div className="col">
-          <Image
-           src={data.products.products[0].image}
-            alt="Picture of the author"
-            width={1900}
-            height={1200}
-            layout={"responsive"}
-            sizes="50vw"
-            placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-            
-          />
-        </div>
-        <div className="col">
-          <Image
-            src={data.products.products[0].image}
-            alt="Picture of the author"
-            width={1900}
-            height={1200}
-            layout={"responsive"}
-            sizes="150vw"
-            placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-          />
-        </div>
-        <div className="col">
-          <Image
-           src={data.products.products[0].image}
-            alt="Picture of the author"
-            width={1900}
-            height={1200}
-            layout={"responsive"}
-            sizes="50vw"
-            placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-          />
-        </div>
-      </section>
-    </>
+    <Layout>
+      <Jumbo />
+      <CenterHome />
+      <CategorieHome />
+    </Layout>
+
   );
 }
 
