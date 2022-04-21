@@ -42,11 +42,10 @@ export default function Home({ data }) {
         
         {data.products.products.map((item)=>{
 
-          return (<div className="col">
+          return (<div className="col" key={item.id}>
          {item.image && <Image
-          key={item.id}
-            src={item.image}
           
+            src={item.image}
             alt="Picture of the author"
             width={1900}
             height={1200}
