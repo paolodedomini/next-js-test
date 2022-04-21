@@ -39,10 +39,13 @@ export default function Home({ data }) {
       </div>
 
       <section>
-        <div className="col">
-          <Image
-            src={data.products.products[0].image}
-            
+        
+        {data.products.products.map((item)=>{
+
+          return (<div className="col">
+         {item.image && <Image
+            src={item.image}
+          
             alt="Picture of the author"
             width={1900}
             height={1200}
@@ -50,45 +53,11 @@ export default function Home({ data }) {
 
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-          />
-        </div>
-        <div className="col">
-          <Image
-           src={data.products.products[0].image}
-            alt="Picture of the author"
-            width={1900}
-            height={1200}
-            layout={"responsive"}
-
-            placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-            
-          />
-        </div>
-        <div className="col">
-          <Image
-            src={data.products.products[0].image}
-            alt="Picture of the author"
-            width={1900}
-            height={1200}
-            layout={"responsive"}
-
-            placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-          />
-        </div>
-        <div className="col">
-          <Image
-           src={data.products.products[0].image}
-            alt="Picture of the author"
-            width={1900}
-            height={1200}
-            layout={"responsive"}
-
-            placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-          />
-        </div>
+          />}
+        </div>)
+        })}
+        
+      
       </section>
     </>
   );

@@ -3,7 +3,7 @@ import { gql } from "@apollo/client";
 export default gql`
   query Prodotti {
      
-     products {
+     products(pageSize: 150) {
        products {
          id
          name
