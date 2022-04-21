@@ -44,6 +44,7 @@ export default function Home({ data }) {
 
           return (<div className="col">
          {item.image && <Image
+          key={item.id}
             src={item.image}
           
             alt="Picture of the author"
