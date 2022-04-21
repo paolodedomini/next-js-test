@@ -1,20 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
+import Image from "next/image";
+import client from "../libs/apollo";
 import PRODOTTI_DONNA from "../queries/donna";
-import Image from 'next/image'
 
-export default function Home() {
-  const { data, loading, error } = useQuery(PRODOTTI_DONNA, { ssr: true });
-
-  console.log({ loading, error });
-
-  const [cached, setCached] = useState(true);
-  useEffect(() => {
-    if (loading) setCached(false);
-  }, [loading]);
-
-  if (loading) return "Loading...";
-  
+export default function Home({ data }) {
+  console.log(data);
   const shimmer = (w, h) => `
   <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
@@ -53,8 +43,8 @@ export default function Home() {
           data.products.products.map((item) => {
 
             return (
-              <>
-              <div className="col">
+              
+              <div className="col" key={item.id}>
                 <Image
                   src={item.image}
 
@@ -68,7 +58,7 @@ export default function Home() {
                 />
                 <h2>{item.sku}</h2>
               </div> 
-              </>
+              
 )
 
           })
@@ -78,7 +68,7 @@ export default function Home() {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { data } = await client.query({
     query: PRODOTTI_DONNA,
   });
