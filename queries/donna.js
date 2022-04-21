@@ -4,7 +4,7 @@ export default gql`
   query Prodotti {
      
      products {
-       products {
+       products{
          id
          name
          image

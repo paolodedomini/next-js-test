@@ -1,10 +1,20 @@
-import { gql } from "@apollo/client";
-import Image from "next/image";
-import client from "../libs/apollo";
+import React, { useEffect, useState } from "react";
+import { useQuery } from "@apollo/client";
 import PRODOTTI_DONNA from "../queries/donna";
+import Image from 'next/image'
 
-export default function Home({ data }) {
-  console.log(data);
+export default function Home() {
+  const { data, loading, error } = useQuery(PRODOTTI_DONNA, { ssr: true });
+
+  console.log({ loading, error });
+
+  const [cached, setCached] = useState(true);
+  useEffect(() => {
+    if (loading) setCached(false);
+  }, [loading]);
+
+  if (loading) return "Loading...";
+  
   const shimmer = (w, h) => `
   <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
@@ -19,9 +29,9 @@ export default function Home({ data }) {
     <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
   </svg>`
   const toBase64 = (str) =>
-    typeof window === 'undefined'
-      ? Buffer.from(str).toString('base64')
-      : window.btoa(str)
+  typeof window === 'undefined'
+    ? Buffer.from(str).toString('base64')
+    : window.btoa(str)
   return (
     <>
       <h1>{data.products.products[0].name}</h1>
@@ -39,43 +49,30 @@ export default function Home({ data }) {
       </div>
 
       <section>
-        {
-          data.products.products.map((item) => {
+        
+        {data.products.products.map((item)=>{
 
-            return (
-              <>
-              <div className="col">
-                <Image
-                  src={item.image}
+          return (<div className="col" key={item.id}>
+         {item.image && <>
+          <Image
+          
+            src={item.image}
+            alt="Picture of the author"
+            width={1900}
+            height={1200}
+            layout={"responsive"}
 
-                  alt="Picture of the author"
-                  width={1900}
-                  height={1200}
-                  layout={"responsive"}
-
-                  placeholder="blur"
-                  blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-                />
-                <h2>{item.sku}</h2>
-              </div> 
-              </>
-)
-
-          })
-        }
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+          /> 
+          <h3>{item.sku}</h3>
+          </>}
+        </div>)
+        })}
+        
+      
       </section>
     </>
   );
 }
 
-export async function getStaticProps() {
-  const { data } = await client.query({
-    query: PRODOTTI_DONNA,
-  });
-
-  return {
-    props: {
-      data: data,
-    },
-  };
-}
