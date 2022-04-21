@@ -54,7 +54,7 @@ export default function Home({ data }) {
 
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-          />
+          /> 
           <h3>{item.sku}</h3>
           </>}
         </div>)
