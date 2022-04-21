@@ -43,7 +43,8 @@ export default function Home({ data }) {
         {data.products.products.map((item)=>{
 
           return (<div className="col" key={item.id}>
-         {item.image && <Image
+         {item.image && <>
+          <Image
           
             src={item.image}
             alt="Picture of the author"
@@ -53,7 +54,9 @@ export default function Home({ data }) {
 
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-          />}
+          />
+          <h3>{item.sku}</h3>
+          </>}
         </div>)
         })}
         
